@@ -8,12 +8,15 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background-color: ${({ theme }) => theme.COLORS.DARK_900};
+    background-color: ${({ theme }) => theme.COLORS.DARK_400};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     -webkit-font-smoothing: antialiased;
     @media(max-width: ${DEVICE_BREAKPOINTS.MD}) {
       font-size: 0.5rem;
+    }
+    @media(min-width: ${DEVICE_BREAKPOINTS.MD}) {
+      font-size: 1rem;
     }
   }
   a {

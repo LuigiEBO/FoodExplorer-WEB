@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const Logo = styled.div`
   display: flex;
   height: 3rem;
-  margin: auto;
+  margin: auto ;
   > img {
     width: 4rem;
   }
@@ -31,10 +31,10 @@ export const Logo = styled.div`
     height: 2rem;
     font-size: 0.8rem;
     margin-bottom: 2rem;
-    margin: 0 0;
     > img {
       width: 2rem;
     }
+    margin: 0 0;
   }
 `
 export const InputArea = styled.div`

@@ -2,7 +2,7 @@ import {Container, Logo, InputArea} from './style'
 import explorerImg from "../../assets/Polygon.svg"
 import { Input } from '../../Components/input'
 import { Button } from '../../Components/button'
-export function SignIn () {
+export function SignUp () {
   return (
     <Container>
       <Logo>
@@ -10,7 +10,11 @@ export function SignIn () {
         <h1>Food Explorer</h1>
       </Logo>
       <InputArea>
-      <h1>Faça Login</h1>
+        <h1>Crie sua Conta</h1>
+        <div>
+          <span>Nome</span>
+          <Input placeholder="exemplo@gmail.com" />
+        </div>
         <div>
           <span>Email</span>
           <Input placeholder="exemplo@gmail.com" />
@@ -20,7 +24,7 @@ export function SignIn () {
           <Input placeholder="No mínimo 6 caracteres" />
         </div>
         <Button title="Entrar"></Button>
-        <a href="">Criar uma conta</a>
+        <a href="">Já tenho uma conta</a>
       </InputArea>
     </Container>
   )
