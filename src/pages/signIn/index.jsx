@@ -6,7 +6,7 @@ export function SignIn () {
   return (
     <Container>
       <Logo>
-        <img src={explorerImg} alt="" />
+        <img src={explorerImg} alt="Logo Explorer" />
         <h1>Food Explorer</h1>
       </Logo>
       <InputArea>

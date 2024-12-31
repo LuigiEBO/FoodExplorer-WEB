@@ -1,9 +1,10 @@
 import { Container } from "./style";
 
-export function Button({title}) {
-  return(
+export function Button({icon: Icon, title}) {
+  return (
     <Container>
-        {title}
+      {Icon && <Icon size={13} /> && <img src={Icon} />}
+      {title}
     </Container>
   )
 }
