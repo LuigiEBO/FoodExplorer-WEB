@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyles from "./styles/global"
-import { HomeCustomer } from './pages/HomeCustomer'
+import { PratoCustomer } from './pages/pratoCustomer'
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <HomeCustomer/>
+      <PratoCustomer/>
     </ThemeProvider>
   </StrictMode>
 )

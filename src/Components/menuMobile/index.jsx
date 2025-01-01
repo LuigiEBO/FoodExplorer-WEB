@@ -1,6 +1,7 @@
 import { Container } from "./style";
 import { FiX, FiSearch } from "react-icons/fi";
 import {Input} from "../input"
+import { Footer } from "../footer";
 export function MenuMobile({menuIsOn, onMenuIsOff}) {
   return (
     <Container data-menu-on={menuIsOn}>
