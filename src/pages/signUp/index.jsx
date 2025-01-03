@@ -3,19 +3,19 @@ import {Container, Logo, InputArea} from './style'
 import explorerImg from "../../assets/Polygon.svg"
 import { Input } from '../../Components/input'
 import { Button } from '../../Components/button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {api} from "../../services/api"
 export function SignUp () {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+  const navigate = useNavigate()
   function handleSignUp() {
     if(!name || !email || !password) {
       return alert("Preencha todos os campos")
     }
 
-    api.post("/users", {name, email, password}).then(() => {alert("usuário cadastrado")}).catch(() => {
+    api.post("/users", {name, email, password}).then(() => {alert("usuário cadastrado"), navigate("/")}).catch(error => {
       if(error.response) {
         alert(error.response.data.message)
       } else {
