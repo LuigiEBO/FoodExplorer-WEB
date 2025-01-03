@@ -3,14 +3,17 @@ import { HeaderAdmin } from "../../Components/headerAdmin";
 import {Footer} from "../../Components/footer"
 import { Input } from "../../Components/input";
 import {FiChevronLeft, FiShare} from "react-icons/fi"
+import { Link } from "react-router-dom";
 export function NewDish() {
   return (
     <Container>
       <HeaderAdmin />
       <div className="main">
         <div className="back">
-          <FiChevronLeft />
-          <h3>Voltar</h3>
+          <Link to="/">
+            <FiChevronLeft />
+            <h3>Voltar</h3>
+          </Link>
         </div>
         <h1>Novo Prato</h1>
         <div className="input-area">

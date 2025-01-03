@@ -5,19 +5,20 @@ export const Container = styled.div`
   font-family: "Poppins";
   > div.main {
     padding: 4rem;
-    >div {
+    > div a {
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
       display: flex;
       align-items: center;
       gap: 0.6rem;
       margin-bottom: 3rem;
-      >svg {
+      > svg {
         font-size: 2rem;
       }
     }
     > div.info {
       display: flex;
       gap: 3rem;
-      >div.text {
+      > div.text {
         display: flex;
         flex-direction: column;
         gap: 3rem;
@@ -34,7 +35,7 @@ export const Container = styled.div`
         width: 20rem;
         height: 20rem;
       }
-      div.ask-food {
+      div.ask-food a {
         display: flex;
         align-items: center;
         max-width: 25rem;
@@ -58,6 +59,7 @@ export const Container = styled.div`
       padding: 0;
       margin-bottom: 1rem;
       > div {
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
         > svg {
           font-size: 1rem;
         }
@@ -88,7 +90,7 @@ export const Container = styled.div`
           font-weight: 300;
           color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }
-        div.ask-food {
+        div.ask-food a {
           display: flex;
           align-items: center;
           width: 16rem;

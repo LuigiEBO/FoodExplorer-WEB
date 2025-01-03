@@ -2,6 +2,7 @@ import { Container } from "./style";
 import { FiX, FiSearch } from "react-icons/fi";
 import {Input} from "../input"
 import { Footer } from "../footer";
+import { Link } from "react-router-dom";
 export function MenuMobileAdmin({menuIsOn, onMenuIsOff}) {
   return (
     <Container data-menu-on={menuIsOn}>
@@ -14,7 +15,9 @@ export function MenuMobileAdmin({menuIsOn, onMenuIsOff}) {
           icon={FiSearch}
           placeholder="Busque por pratos ou ingredientes"
         />
-        <h3>Novo Prato</h3>
+        <Link to="/novoprato">
+          <h3>Novo Prato</h3>
+        </Link>
         <h3>Sair</h3>
       </div>
     </Container>

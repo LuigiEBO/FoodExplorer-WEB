@@ -2,6 +2,7 @@ import {Container, Logo, InputArea} from './style'
 import explorerImg from "../../assets/Polygon.svg"
 import { Input } from '../../Components/input'
 import { Button } from '../../Components/button'
+import { Link } from 'react-router-dom'
 export function SignIn () {
   return (
     <Container>
@@ -20,7 +21,7 @@ export function SignIn () {
           <Input placeholder="No mínimo 6 caracteres" />
         </div>
         <Button title="Entrar"></Button>
-        <a href="">Criar uma conta</a>
+        <Link to="/register"> Crie uma Conta</Link>
       </InputArea>
     </Container>
   )

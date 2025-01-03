@@ -7,6 +7,7 @@ import { HeaderAdmin } from "../../Components/headerAdmin";
 import { MenuMobileAdmin } from "../../Components/menuMobileAdmin";
 import { Footer } from "../../Components/footer";
 import { FiEdit} from "react-icons/fi";
+import { Link } from "react-router-dom";
 export function HomeAdmin() {
   const [menuIsOn, setMenuIsOn] = useState(false);
   return (
@@ -28,7 +29,9 @@ export function HomeAdmin() {
         </div>
         <h2>Refeições</h2>
         <div className="scroll-foods">
-          <FoodAreaAdmin icon={FiEdit} img={foodImg} price="R$49,99" />
+          <Link to="/prato">
+            <FoodAreaAdmin icon={FiEdit} img={foodImg} price="R$49,99" />{" "}
+          </Link>
           <FoodAreaAdmin icon={FiEdit} img={foodImg} price="R$49,99" />
           <FoodAreaAdmin icon={FiEdit} img={foodImg} price="R$49,99" />
           <FoodAreaAdmin icon={FiEdit} img={foodImg} price="R$49,99" />

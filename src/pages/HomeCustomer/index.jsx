@@ -7,6 +7,7 @@ import { Header } from "../../Components/header";
 import { MenuMobile } from "../../Components/menuMobile";
 import { Footer } from "../../Components/footer";
 import { FiHeart} from "react-icons/fi";
+import { Link } from "react-router-dom";
 export function HomeCustomer() {
   const [menuIsOn, setMenuIsOn] = useState(false);
   return (
@@ -28,156 +29,22 @@ export function HomeCustomer() {
         </div>
         <h2>Refeições</h2>
         <div className="scroll-foods">
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
+          <Link to="/prato">
+            <FoodArea
+              icon={FiHeart}
+              img={foodImg}
+              name="Salda Ravanello"
+              price="R$49,99"
+            />
+          </Link>
         </div>
         <h2>Pratos Principais</h2>
         <div className="scroll-foods">
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
+          
         </div>
         <h2>Bebidas</h2>
         <div className="scroll-foods">
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
-          <FoodArea
-            icon={FiHeart}
-            img={foodImg}
-            name="Salda Ravanello"
-            price="R$49,99"
-          />
+          
         </div>
       </div>
       <Footer />

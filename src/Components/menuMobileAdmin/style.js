@@ -16,11 +16,12 @@ export const Container = styled.div`
     > div.interective {
       padding: 0 1.5rem;
     }
-     h3 {
+    h3, a {
       font-size: 1.3rem;
       font-family: "Poppins";
       font-weight: 300;
       border-bottom: 1px solid ${({ theme }) => theme.COLORS.LIGHT_300};
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
     > div.header {
       height: 80px;

@@ -5,6 +5,7 @@ import {Input} from "../input/index"
 import {Button} from "../button"
 import {FiSearch, FiMenu} from "react-icons/fi"
 import sairSvg from "../../assets/sairSvg.svg"
+import { Link } from "react-router-dom";
 export function HeaderAdmin({onMenuIsOn}) {
   return (
     <Container>
@@ -24,7 +25,10 @@ export function HeaderAdmin({onMenuIsOn}) {
           icon={FiSearch}
         />
       </div>
-      <Button title="Novo Prato" />
+        
+          <Link to="/novoprato">
+            <Button title="Novo Prato"></Button>
+          </Link>
       <img src={sairSvg} alt="ícone para sair" />
     </Container>
   )

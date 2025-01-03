@@ -10,11 +10,11 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
-    div.back {
+    div.back a {
       display: flex;
       align-items: center;
-
-      svg {
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      >svg {
         font-size: 2rem;
       }
     }

@@ -6,6 +6,7 @@ import {HeaderAdmin} from "../../Components/headerAdmin"
 import { Footer } from "../../Components/footer";
 import { FiArrowLeft, FiMinus, FiPlus} from "react-icons/fi";
 import { Button } from "../../Components/button";
+import { Link } from "react-router-dom";
 export function PratoAdmin() {
   const [amount, setAmount] = useState(1)
   return (
@@ -13,8 +14,10 @@ export function PratoAdmin() {
       <HeaderAdmin />
       <div className="main">
         <div>
-          <FiArrowLeft />
-          <h2>Voltar</h2>
+          <Link to="/">
+            <FiArrowLeft />
+            <h2>Voltar</h2>
+          </Link>
         </div>
 
         <div className="info">
@@ -26,7 +29,9 @@ export function PratoAdmin() {
               O pão naan dá um toque especial.
             </p>
             <div className="ask-food">
-              <Button title={"Editar Prato"}/>
+              <Link to="/editarprato">
+                <Button title={"Editar Prato"} />
+              </Link>
             </div>
           </div>
         </div>

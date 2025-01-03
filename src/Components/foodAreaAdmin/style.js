@@ -11,7 +11,7 @@ export const Container = styled.div`
   height: 16rem;
   padding: 0.7rem;
   text-align: center;
-
+  color: ${({ theme }) => theme.COLORS.LIGHT_100};
   > h3 {
     font-weight: 500;
   }

@@ -6,6 +6,7 @@ import {Header} from "../../Components/header"
 import { Footer } from "../../Components/footer";
 import { FiArrowLeft, FiMinus, FiPlus} from "react-icons/fi";
 import { Button } from "../../Components/button";
+import { Link } from "react-router-dom";
 export function PratoCustomer() {
   const [amount, setAmount] = useState(1)
   return (
@@ -13,8 +14,10 @@ export function PratoCustomer() {
       <Header />
       <div className="main">
         <div>
-          <FiArrowLeft />
-          <h2>Voltar</h2>
+          <Link to="/">
+            <FiArrowLeft />
+            <h2>Voltar</h2>
+          </Link>
         </div>
 
         <div className="info">
