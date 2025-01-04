@@ -36,22 +36,21 @@ export const Container = styled.div`
         }
       }
     }
-    > div.scroll-foods {
+    > div.scroll-foods a {
       display: flex;
       max-width: 100%;
-      justify-content: space-between;
       gap: 0.4rem;
       overflow: scroll;
       overflow-y: none;
     }
-    > div.scroll-foods::-webkit-scrollbar {
+    > div.scroll-foods a::-webkit-scrollbar {
       background-color: ${({ theme }) => theme.COLORS.DARK_400};
       color: ${({ theme }) => theme.COLORS.DARK_1000};
     }
-    > div.scroll-foods::-webkit-scrollbar-corner {
+    > div.scroll-foods a::-webkit-scrollbar-corner {
       display: none;
     }
-    > div.scroll-foods::-webkit-scrollbar-thumb {
+    > div.scroll-foods a::-webkit-scrollbar-thumb {
       background-color: ${({ theme }) => theme.COLORS.DARK_1000};
       border-radius: 1rem;
     }

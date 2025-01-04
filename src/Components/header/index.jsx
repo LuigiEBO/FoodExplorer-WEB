@@ -3,9 +3,11 @@ import explorerImg from "../../assets/Polygon.svg"
 import receiptSvg from "../../assets/Receipt.svg"
 import {Input} from "../input/index"
 import {Button} from "../button"
+import { useAuth } from "../../hooks/auth";
 import {FiSearch, FiMenu} from "react-icons/fi"
 import sairSvg from "../../assets/sairSvg.svg"
-export function Header({onMenuIsOn}) {
+export function Header({onMenuIsOn, input}) {
+  const {Logout} = useAuth()
   return (
     <Container>
       <button className="menu-mobile" onClick={onMenuIsOn}>
@@ -16,13 +18,10 @@ export function Header({onMenuIsOn}) {
         <h2>Food Explorer</h2>
       </div>
       <div className="input">
-        <Input
-          placeholder="Busque por pratos ou ingredientes"
-          icon={FiSearch}
-        />
+        {input}
       </div>
       <Button icon={receiptSvg} title="Carrinho" />
-      <img src={sairSvg} alt="ícone para sair" />
+      <img src={sairSvg} alt="ícone para sair" onClick={Logout} />
       <img
         className="carrinho"
         src={receiptSvg}

@@ -1,12 +1,12 @@
 import { Container } from "./style";
 import explorerImg from "../../assets/Polygon.svg"
-import receiptSvg from "../../assets/Receipt.svg"
-import {Input} from "../input/index"
 import {Button} from "../button"
-import {FiSearch, FiMenu} from "react-icons/fi"
+import { FiMenu} from "react-icons/fi"
 import sairSvg from "../../assets/sairSvg.svg"
 import { Link } from "react-router-dom";
-export function HeaderAdmin({onMenuIsOn}) {
+import { useAuth } from "../../hooks/auth";
+export function HeaderAdmin({onMenuIsOn, input}) {
+  const {Logout} = useAuth()
   return (
     <Container>
       <button className="menu-mobile" onClick={onMenuIsOn}>
@@ -20,16 +20,13 @@ export function HeaderAdmin({onMenuIsOn}) {
         </div>
       </div>
       <div className="input">
-        <Input
-          placeholder="Busque por pratos ou ingredientes"
-          icon={FiSearch}
-        />
+        {input}
       </div>
         
           <Link to="/novoprato">
             <Button title="Novo Prato"></Button>
           </Link>
-      <img src={sairSvg} alt="ícone para sair" />
+      <img src={sairSvg} alt="ícone para sair" onClick={Logout}/>
     </Container>
   )
 }
