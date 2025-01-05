@@ -2,10 +2,10 @@ import {useState} from "react"
 import { Container } from "./style";
 import {FiMinus, FiPlus, } from "react-icons/fi"
 import { Button } from "../button";
-export function FoodArea ({icon: Icon, img, name, price}) {
+export function FoodArea ({icon: Icon, img, name, price, ...rest}) {
   const [amount, setAmount] = useState(1)
   return (
-    <Container>
+    <Container {...rest}>
       {Icon && <Icon size={20} />}
       <img src={img} alt="" />
       <h3>{name}</h3>

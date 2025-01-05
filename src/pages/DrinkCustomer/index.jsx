@@ -9,16 +9,16 @@ import { Button } from "../../Components/button";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
-export function PratoCustomer() {
+export function DrinkCustomer() {
   const [amount, setAmount] = useState(1);
-  const [dataFood, setDataFood] = useState(" ")
+  const [dataDrink, setDataDrinks] = useState(" ")
   const params = useParams()
 
   useEffect(() => {
     async function fetchDish() {
-      const response = await api.get(`/foods/show?name=${params.name}`)
+      const response = await api.get(`/foods/showDrink?name=${params.name}`)
 
-      setDataFood(response.data[0])
+      setDataDrinks(response.data[0])
     }
 
     fetchDish()
@@ -34,13 +34,13 @@ export function PratoCustomer() {
           </Link>
         </div>
 
-        {dataFood && 
+        {dataDrink && 
           <div className="info">
-            <img className="pratoImg" src={dataFood.avatar} alt="Imagem do prato" />
+            <img className="pratoImg" src={dataDrink.avatar} alt="Imagem do prato" />
             <div className="text">
-              <h1>{dataFood.name}</h1>
+              <h1>{dataDrink.name}</h1>
               <p>
-                {dataFood.description}
+                {dataDrink.description}
               </p>
               <div className="ask-food">
                 <FiMinus onClick={() => setAmount(amount - 1)} />
@@ -48,7 +48,7 @@ export function PratoCustomer() {
                 <FiPlus onClick={() => setAmount(amount + 1)} />
                 <Button
                   title={"Pedir R$"}
-                  price={dataFood.price}
+                  price={dataDrink.price}
                   icon={receiptSvg}
                 />
               </div>

@@ -8,7 +8,7 @@ import { MenuMobileAdmin } from "../../Components/menuMobileAdmin";
 import { Footer } from "../../Components/footer";
 import { Input } from "../../Components/input";
 import { FiEdit} from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiSearch,  } from "react-icons/fi"
 import { api } from "../../services/api";
 export function HomeAdmin() {
@@ -17,6 +17,8 @@ export function HomeAdmin() {
   const [foods, setFoods] = useState([])
   const [drinks, setDrinks] = useState([])
   const [desserts, setDesserts] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     
@@ -29,6 +31,16 @@ export function HomeAdmin() {
 
     fetchFoods()
   }, [name])
+
+  function handleForFood(name) {
+    navigate(`prato/${name}`)
+  }
+  function handleForDrink(name) {
+    navigate(`drink/${name}`)
+  }
+  function handleForDessert(name) {
+    navigate(`dessert/${name}`)
+  }
   return (
     <Container>
       <HeaderAdmin
@@ -64,42 +76,48 @@ export function HomeAdmin() {
         </div>
         <h2>Refeições</h2>
         <div className="scroll-foods">
-          <Link to="/prato">
-            {foods.map((food) => (
-              <FoodAreaAdmin
-                icon={FiEdit}
-                img={food.avatar}
-                name={food.name}
-                price={food.price}
-              />
-            ))}
-          </Link>
+          {foods.map((food) => (
+            <FoodAreaAdmin
+              key={food.id}
+              icon={FiEdit}
+              img={food.avatar}
+              name={food.name}
+              price={food.price}
+              onClick={() => {
+                handleForFood(food.name)
+              }}
+            />
+          ))}
         </div>
-        <h2>Pratos Principais</h2>
+        <h2>Sobremesas</h2>
         <div className="scroll-foods">
-          <Link to="/prato">
-            {desserts.map((dessert) => (
-              <FoodAreaAdmin
-                icon={FiEdit}
-                img={dessert.avatar}
-                name={dessert.name}
-                price={dessert.price}
-              />
-            ))}
-          </Link>
+          {desserts.map((dessert) => (
+            <FoodAreaAdmin
+            key={dessert.id}
+              icon={FiEdit}
+              img={dessert.avatar}
+              name={dessert.name}
+              price={dessert.price}
+              onClick={() => {
+                handleForDessert(dessert.name)
+              }}
+            />
+          ))}
         </div>
         <h2>Bebidas</h2>
         <div className="scroll-foods">
-          <Link to="/prato">
-            {drinks.map((drink) => (
-              <FoodAreaAdmin
-                icon={FiEdit}
-                img={drink.avatar}
-                name={drink.name}
-                price={drink.price}
-              />
-            ))}
-          </Link>
+          {drinks.map((drink) => (
+            <FoodAreaAdmin
+            key={drink.id}
+              icon={FiEdit}
+              img={drink.avatar}
+              name={drink.name}
+              price={drink.price}
+              onClick={() => {
+                handleForDrink(drink.name)
+              }}
+            />
+          ))}
         </div>
       </div>
       <Footer />
