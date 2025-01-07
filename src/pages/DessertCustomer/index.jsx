@@ -13,14 +13,12 @@ export function DessertCustomer() {
   const [amount, setAmount] = useState(1);
   const [dataDessert, setDataDessert] = useState(" ")
   const params = useParams()
-
   useEffect(() => {
     async function fetchDish() {
       const response = await api.get(`/foods/showDessert?name=${params.name}`)
 
       setDataDessert(response.data[0])
     }
-
     fetchDish()
   }, [])
   const imgFood = params.img

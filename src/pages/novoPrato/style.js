@@ -10,7 +10,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
-    div.back a{
+    div.back a {
       display: flex;
       align-items: center;
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -23,6 +23,26 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         margin-bottom: 1rem;
+
+        div.ingredientes {
+          white-space: normal;
+          display: flex;
+          justify-content: space-around;
+          font-family: "Roboto";
+          border: none;
+          border-color: none;
+          background-color: ${({ theme }) => theme.COLORS.DARK_1000};
+          max-width: 100%;
+          padding: 0.8rem;
+          border-radius: 0.4rem;
+          color: ${({ theme }) => theme.COLORS.LIGHT_500};
+          @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+            font-size: 0.5rem;
+            padding: 0.6rem;
+            width: 100%;
+            border-radius: 0.4rem;
+          }
+        }
       }
       input#foodImg {
         display: none;
@@ -58,6 +78,11 @@ export const Container = styled.div`
         }
       }
       button {
+        align-self: center;
+        background-color: transparent;
+        border: none;
+      }
+      button.save {
         font-family: "Roboto";
         width: 100%;
         padding: 0.8rem;

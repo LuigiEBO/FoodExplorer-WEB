@@ -6,12 +6,15 @@ import {HeaderAdmin} from "../../Components/headerAdmin"
 import { Footer } from "../../Components/footer";
 import { FiArrowLeft, FiMinus, FiPlus} from "react-icons/fi";
 import { Button } from "../../Components/button";
+import { Tag } from "../../Components/tags";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 export function DrinkAdmin() {
   const [dataDrink, setDataDrink] = useState(" ")
+  const [dataTags, setDataTags] = useState(null)
   const [type, setType] = useState("drinks")
   const params = useParams()
+  const id = Number(params.id)
 
   const navigate = useNavigate()
   useEffect(() => {
@@ -20,7 +23,11 @@ export function DrinkAdmin() {
       
       setDataDrink(response.data[0])
     }
-    
+    async function fetchTags() {
+      const response = await api.get(`/tags/drinks?id=${id}`)
+      setDataTags(response.data)
+    }
+    fetchTags()
     fetchDish()
   }, [])
   
@@ -49,6 +56,13 @@ export function DrinkAdmin() {
             <div className="text">
               <h1>{dataDrink.name}</h1>
               <p>{dataDrink.description}</p>
+              {dataTags && (
+                <div className="tags">
+                    {dataTags.map((tag) => (
+                      <Tag key={String(tag.id)} title={tag.name} />
+                    ))}
+                </div>
+              )}
               <div className="ask-food">
                 <Button
                   title={"Editar Prato"}

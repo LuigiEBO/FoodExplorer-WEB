@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import homeImg from "../../assets/homeImg.png"
 import foodImg from "../../assets/salada.png"
-import { Container } from "./style";
-import { FoodAreaAdmin } from "../../Components/foodAreaAdmin";
-import { HeaderAdmin } from "../../Components/headerAdmin";
-import { MenuMobileAdmin } from "../../Components/menuMobileAdmin";
-import { Footer } from "../../Components/footer";
-import { Input } from "../../Components/input";
-import { FiEdit} from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
-import { FiSearch,  } from "react-icons/fi"
-import { api } from "../../services/api";
+import { Container } from "./style"
+import { FoodAreaAdmin } from "../../Components/foodAreaAdmin"
+import { HeaderAdmin } from "../../Components/headerAdmin"
+import { MenuMobileAdmin } from "../../Components/menuMobileAdmin"
+import { Footer } from "../../Components/footer"
+import { Input } from "../../Components/input"
+import { FiEdit } from "react-icons/fi"
+import { Link, useNavigate } from "react-router-dom"
+import { FiSearch } from "react-icons/fi"
+import { api } from "../../services/api"
 export function HomeAdmin() {
   const [menuIsOn, setMenuIsOn] = useState(false)
   const [name, setSearch] = useState("")
   const [foods, setFoods] = useState([])
   const [drinks, setDrinks] = useState([])
   const [desserts, setDesserts] = useState([])
-  
+
   const navigate = useNavigate()
   useEffect(() => {
-    
     async function fetchFoods() {
-      const response = await api.get(`/foods?name=${name}`, )
+      const response = await api.get(`/foods?name=${name}`)
       setFoods(response.data[0])
       setDrinks(response.data[1])
       setDesserts(response.data[2])
@@ -31,14 +30,14 @@ export function HomeAdmin() {
     fetchFoods()
   }, [name])
 
-  function handleForFood(name, img) {
-    navigate(`prato/${name}/${img}`)
+  function handleForFood(name, img, id) {
+    navigate(`prato/${name}/${img}/${id}`)
   }
-  function handleForDrink(name, img) {
-    navigate(`drink/${name}/${img}`)
+  function handleForDrink(name, img, id) {
+    navigate(`drink/${name}/${img}/${id}`)
   }
-  function handleForDessert(name, img) {
-    navigate(`dessert/${name}/${img}`)
+  function handleForDessert(name, img, id) {
+    navigate(`dessert/${name}/${img}/${id}`)
   }
   return (
     <Container>
@@ -75,7 +74,7 @@ export function HomeAdmin() {
         </div>
         <h2>Refeições</h2>
         <div className="scroll-foods">
-          {foods.map((food) => ( 
+          {foods.map((food) => (
             <FoodAreaAdmin
               key={food.id}
               icon={FiEdit}
@@ -83,7 +82,7 @@ export function HomeAdmin() {
               name={food.name}
               price={food.price}
               onClick={() => {
-                handleForFood(food.name, food.avatar)
+                handleForFood(food.name, food.avatar, food.id)
               }}
             />
           ))}
@@ -92,13 +91,13 @@ export function HomeAdmin() {
         <div className="scroll-foods">
           {desserts.map((dessert) => (
             <FoodAreaAdmin
-            key={dessert.id}
+              key={dessert.id}
               icon={FiEdit}
               img={dessert.avatar}
               name={dessert.name}
               price={dessert.price}
               onClick={() => {
-                handleForDessert(dessert.name, dessert.avatar)
+                handleForDessert(dessert.name, dessert.avatar, dessert.id)
               }}
             />
           ))}
@@ -107,13 +106,13 @@ export function HomeAdmin() {
         <div className="scroll-foods">
           {drinks.map((drink) => (
             <FoodAreaAdmin
-            key={drink.id}
+              key={drink.id}
               icon={FiEdit}
               img={drink.avatar}
               name={drink.name}
               price={drink.price}
               onClick={() => {
-                handleForDrink(drink.name, drink.avatar)
+                handleForDrink(drink.name, drink.avatar, drink.id)
               }}
             />
           ))}

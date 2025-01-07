@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container } from "./style";
 import { HeaderAdmin } from "../../Components/headerAdmin";
+import { NewTag } from "../../Components/newTag";
 import {Footer} from "../../Components/footer"
 import { Input } from "../../Components/input";
 import {FiChevronLeft, FiShare} from "react-icons/fi"
@@ -11,13 +12,23 @@ export function NewDish() {
   const [price, setPrice] = useState()
   const [img, setImg] = useState()
   const [description, setDescription] = useState()
+  const [tags, setTags] = useState([])
+  const [newTag, setNewTag] = useState("")
   const [route, setRoute] = useState("main")
   const navigate = useNavigate()
+  function handleAddTag() {
+    setTags((prevState) => [...prevState, newTag])
+    setNewTag("")
+  }
+  function handleRemoveTag(tagDeleted) {
+    setTags((prevState) => prevState.filter((tag) => tag !== tagDeleted))
+  }
   async function handleNewFood(img) {
     await api.post(`/foods/${route}`, {
       name,
       price,
       description,
+      tags,
     })
 
     const fileForm = new FormData()
@@ -76,6 +87,25 @@ export function NewDish() {
             </select>
           </div>
           <div className="input-wrapper">
+            <p>Ingredientes</p>
+            <div className="ingredientes">
+              {tags.map((tag, index) => (
+                <NewTag
+                  key={String(index)}
+                  value={tag}
+                  onclick={() => handleRemoveTag(tag)}
+                />
+              ))}
+              <NewTag
+                isNew
+                placeholder="Ingrediente"
+                onChange={(e) => setNewTag(e.target.value)}
+                value={newTag}
+                onclick={handleAddTag}
+              />
+            </div>
+          </div>
+          <div className="input-wrapper">
             <p>Preço</p>
             <Input
               placeholder="R$00,00"
@@ -94,7 +124,7 @@ export function NewDish() {
               }}
             />
           </div>
-          <button onClick={() => handleNewFood(img)}>Salvar alterações</button>
+          <button className="save" onClick={() => handleNewFood(img)}>Salvar alterações</button>
         </div>
       </div>
       <Footer />
