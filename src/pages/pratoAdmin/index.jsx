@@ -6,13 +6,13 @@ import {HeaderAdmin} from "../../Components/headerAdmin"
 import { Footer } from "../../Components/footer";
 import { FiArrowLeft, FiMinus, FiPlus} from "react-icons/fi";
 import { Button } from "../../Components/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 export function PratoAdmin() {
   const [dataFood, setDataFood] = useState(" ")
   const params = useParams()
-
-  
+  const [type, setType] = useState("foods")
+  const navigate = useNavigate()
   useEffect(() => {
     async function fetchDish() {
       const response = await api.get(`/foods/show/?name=${params.name}`)
@@ -22,6 +22,10 @@ export function PratoAdmin() {
     
     fetchDish()
   }, [])
+  const imgFood = params.img ? `${api.defaults.baseURL}/files/${params.img}` : null
+  function hanldeForEdit(type, id, name, price, description) {
+    navigate(`/editarprato/${type}/${id}/${name}/${price}/${description}`)
+  }
   return (
     <Container>
       <HeaderAdmin />
@@ -32,22 +36,23 @@ export function PratoAdmin() {
             <h2>Voltar</h2>
           </Link>
         </div>
-      { dataFood &&
-        <div className="info">
-          <img className="pratoImg" src={dataFood.avatar} alt="Imagem do prato" />
-          <div className="text">
-            <h1>{dataFood.name}</h1>
-            <p>
-              {dataFood.description}
-            </p>
-            <div className="ask-food">
-              <Link to="/editarprato">
-                <Button title={"Editar Prato"} />
-              </Link>
+        {dataFood && (
+          <div className="info">
+            <img className="pratoImg" src={imgFood} alt="Imagem do prato" />
+            <div className="text">
+              <h1>{dataFood.name}</h1>
+              <p>{dataFood.description}</p>
+              <div className="ask-food">
+                <Button
+                  title={"Editar Prato"}
+                  onClick={() => {
+                    hanldeForEdit(type, dataFood.id, dataFood.name, dataFood.price, dataFood.description)
+                  }}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      }
+        )}
       </div>
       <Footer />
     </Container>

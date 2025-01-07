@@ -1,7 +1,6 @@
 import { Container } from "./style";
 import explorerImg from "../../assets/Polygon.svg"
 import receiptSvg from "../../assets/Receipt.svg"
-import {Input} from "../input/index"
 import {Button} from "../button"
 import { useAuth } from "../../hooks/auth";
 import {FiSearch, FiMenu} from "react-icons/fi"

@@ -12,14 +12,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiSearch,  } from "react-icons/fi"
 import { api } from "../../services/api";
 export function HomeAdmin() {
-  const [menuIsOn, setMenuIsOn] = useState(false);
+  const [menuIsOn, setMenuIsOn] = useState(false)
   const [name, setSearch] = useState("")
   const [foods, setFoods] = useState([])
   const [drinks, setDrinks] = useState([])
   const [desserts, setDesserts] = useState([])
-
+  
   const navigate = useNavigate()
-
   useEffect(() => {
     
     async function fetchFoods() {
@@ -32,14 +31,14 @@ export function HomeAdmin() {
     fetchFoods()
   }, [name])
 
-  function handleForFood(name) {
-    navigate(`prato/${name}`)
+  function handleForFood(name, img) {
+    navigate(`prato/${name}/${img}`)
   }
-  function handleForDrink(name) {
-    navigate(`drink/${name}`)
+  function handleForDrink(name, img) {
+    navigate(`drink/${name}/${img}`)
   }
-  function handleForDessert(name) {
-    navigate(`dessert/${name}`)
+  function handleForDessert(name, img) {
+    navigate(`dessert/${name}/${img}`)
   }
   return (
     <Container>
@@ -76,7 +75,7 @@ export function HomeAdmin() {
         </div>
         <h2>Refeições</h2>
         <div className="scroll-foods">
-          {foods.map((food) => (
+          {foods.map((food) => ( 
             <FoodAreaAdmin
               key={food.id}
               icon={FiEdit}
@@ -84,7 +83,7 @@ export function HomeAdmin() {
               name={food.name}
               price={food.price}
               onClick={() => {
-                handleForFood(food.name)
+                handleForFood(food.name, food.avatar)
               }}
             />
           ))}
@@ -99,7 +98,7 @@ export function HomeAdmin() {
               name={dessert.name}
               price={dessert.price}
               onClick={() => {
-                handleForDessert(dessert.name)
+                handleForDessert(dessert.name, dessert.avatar)
               }}
             />
           ))}
@@ -114,7 +113,7 @@ export function HomeAdmin() {
               name={drink.name}
               price={drink.price}
               onClick={() => {
-                handleForDrink(drink.name)
+                handleForDrink(drink.name, drink.avatar)
               }}
             />
           ))}

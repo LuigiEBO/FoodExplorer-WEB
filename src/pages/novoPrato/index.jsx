@@ -12,21 +12,26 @@ export function NewDish() {
   const [img, setImg] = useState()
   const [description, setDescription] = useState()
   const [route, setRoute] = useState("main")
-  
   const navigate = useNavigate()
-  async function handleNewFood() {
+  async function handleNewFood(img) {
     await api.post(`/foods/${route}`, {
       name,
       price,
       description,
     })
+
+    const fileForm = new FormData()
+    fileForm.append("img", img)
+    console.log(fileForm)
+    const response = await api.patch(`/foods/${route}Img/${name}`, fileForm)
     
-    await api.patch(`/foods/img${route}/${name}`, {
-      img
-    })
 
     alert("Novo prato criado com sucesso")
     navigate("/")
+  }
+  function handleChangeAvatar(event) {
+    const file = event.target.files[0];
+    setImg(file);
   }
   return (
     <Container>
@@ -41,11 +46,7 @@ export function NewDish() {
         <h1>Novo Prato</h1>
         <div className="input-area">
           <div className="input-wrapper">
-            <input
-              id="foodImg"
-              type="file"
-              onChange={(e) => setImg(e.target.value)}
-            />
+            <input id="foodImg" type="file" onChange={handleChangeAvatar} />
             <p>Imagem do Prato</p>
             <label htmlFor="foodImg">
               <FiShare /> Selecionar Imagem
@@ -93,7 +94,7 @@ export function NewDish() {
               }}
             />
           </div>
-          <button onClick={() => handleNewFood()}>Salvar alterações</button>
+          <button onClick={() => handleNewFood(img)}>Salvar alterações</button>
         </div>
       </div>
       <Footer />

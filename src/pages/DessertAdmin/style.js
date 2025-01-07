@@ -35,7 +35,7 @@ export const Container = styled.div`
         width: 20rem;
         height: 20rem;
       }
-      div.ask-food a {
+      div.ask-food  {
         display: flex;
         align-items: center;
         max-width: 25rem;
@@ -90,7 +90,7 @@ export const Container = styled.div`
           font-weight: 300;
           color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }
-        div.ask-food a {
+        div.ask-food  {
           display: flex;
           align-items: center;
           width: 16rem;

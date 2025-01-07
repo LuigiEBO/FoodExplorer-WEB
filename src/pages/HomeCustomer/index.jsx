@@ -30,14 +30,14 @@ export function HomeCustomer() {
     fetchFoods()
   }, [name])
 
-  function handleForFood(name) {
-    navigate(`prato/${name}`)
+  function handleForFood(name, img) {
+    navigate(`prato/${name}/${img}`)
   }
-  function handleForDrink(name) {
-    navigate(`drink/${name}`)
+  function handleForDrink(name, img) {
+    navigate(`drink/${name}/${img}`)
   }
-  function handleForDessert(name) {
-    navigate(`dessert/${name}`)
+  function handleForDessert(name, img) {
+    navigate(`dessert/${name}/${img}`)
   }
   return (
     <Container>
@@ -81,8 +81,9 @@ export function HomeCustomer() {
               img={food.avatar}
               name={food.name}
               price={food.price}
+              description={food.description}
               onClick={() => {
-                handleForFood(food.name)
+                handleForFood(food.name, food.avatar)
               }}
             />
           ))}
@@ -97,7 +98,7 @@ export function HomeCustomer() {
               name={dessert.name}
               price={dessert.price}
               onClick={() => {
-                handleForDessert(dessert.name)
+                handleForDessert(dessert.name, dessert.avatar)
               }}
             />
           ))}
@@ -112,7 +113,7 @@ export function HomeCustomer() {
               name={drink.name}
               price={drink.price}
               onClick={() => {
-                handleForDrink(drink.name)
+                handleForDrink(drink.name, drink.avatar)
               }}
             />
           ))}

@@ -9,9 +9,10 @@ export function CustomerRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomeCustomer />} />
-      <Route path="/prato/:name" element={<PratoCustomer />} />
-      <Route path="/drink/:name" element={<DrinkCustomer />} />
-      <Route path="/dessert/:name" element={<DessertCustomer />} />
+      <Route path="/prato/:name/:img" element={<PratoCustomer />} />
+      <Route path="/drink/:name/:img" element={<DrinkCustomer />} />
+      <Route path="/dessert/:name/:img" element={<DessertCustomer />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }

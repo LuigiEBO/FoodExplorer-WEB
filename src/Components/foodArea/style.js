@@ -17,6 +17,10 @@ export const Container = styled.div`
   > span {
     color: ${({ theme }) => theme.COLORS.CAKE_200};
   }
+  > p {
+    font-size: 0.5rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+  }
   > img {
     height: 4rem;
     width: 4rem;
@@ -30,6 +34,10 @@ export const Container = styled.div`
     font-size: 1rem;
   }
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    > p {
+      font-size: 0.3rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+    }
     width: 10rem;
     height: 12rem;
   }

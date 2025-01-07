@@ -23,6 +23,9 @@ export function DessertCustomer() {
 
     fetchDish()
   }, [])
+  const imgFood = params.img
+    ? `${api.defaults.baseURL}/files/${params.img}`
+    : null
   return (
     <Container>
       <Header />
@@ -36,7 +39,7 @@ export function DessertCustomer() {
 
         {dataDessert && 
           <div className="info">
-            <img className="pratoImg" src={dataDessert.avatar} alt="Imagem do prato" />
+            <img className="pratoImg" src={imgFood} alt="Imagem do prato" />
             <div className="text">
               <h1>{dataDessert.name}</h1>
               <p>

@@ -6,13 +6,14 @@ import {HeaderAdmin} from "../../Components/headerAdmin"
 import { Footer } from "../../Components/footer";
 import { FiArrowLeft, FiMinus, FiPlus} from "react-icons/fi";
 import { Button } from "../../Components/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 export function DessertAdmin() {
   const [dataDessert, setDataDessert] = useState(" ")
+  const [type, setType] = useState("desserts")
   const params = useParams()
 
-  
+  const navigate = useNavigate()
   useEffect(() => {
     async function fetchDish() {
       const response = await api.get(`/foods/showDessert?name=${params.name}`)
@@ -22,6 +23,15 @@ export function DessertAdmin() {
     
     fetchDish()
   }, [])
+
+
+  const imgFood = params.img
+    ? `${api.defaults.baseURL}/files/${params.img}`
+    : null
+
+  function hanldeForEdit(type, id, name, price, description) {
+    navigate(`/editarprato/${type}/${id}/${name}/${price}/${description}`)
+  }
   return (
     <Container>
       <HeaderAdmin />
@@ -32,22 +42,23 @@ export function DessertAdmin() {
             <h2>Voltar</h2>
           </Link>
         </div>
-      { dataDessert &&
-        <div className="info">
-          <img className="pratoImg" src={dataDessert.avatar} alt="Imagem do prato" />
-          <div className="text">
-            <h1>{dataDessert.name}</h1>
-            <p>
-              {dataDessert.description}
-            </p>
-            <div className="ask-food">
-              <Link to="/editarprato">
-                <Button title={"Editar Prato"} />
-              </Link>
+        {dataDessert && (
+          <div className="info">
+            <img className="pratoImg" src={imgFood} alt="Imagem do prato" />
+            <div className="text">
+              <h1>{dataDessert.name}</h1>
+              <p>{dataDessert.description}</p>
+              <div className="ask-food">
+                <Button
+                  title={"Editar Prato"}
+                  onClick={() => {
+                    hanldeForEdit(type, dataDessert.id, dataDessert.name, dataDessert.price, dataDessert.description)
+                  }}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      }
+        )}
       </div>
       <Footer />
     </Container>

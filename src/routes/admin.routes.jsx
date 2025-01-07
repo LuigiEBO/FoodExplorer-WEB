@@ -13,11 +13,15 @@ export function AdminRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomeAdmin />} />
-      <Route path="/prato/:name" element={<PratoAdmin />} />
-      <Route path="/drink/:name" element={<DrinkAdmin />} />
-      <Route path="/dessert/:name" element={<DessertAdmin />} />
+      <Route path="/prato/:name/:img" element={<PratoAdmin />} />
+      <Route path="/drink/:name/:img" element={<DrinkAdmin />} />
+      <Route path="/dessert/:name/:img" element={<DessertAdmin />} />
       <Route path="/novoprato" element={<NewDish />} />
-      <Route path="/editarprato" element={<EditDish />} />
+      <Route
+        path="/editarprato/:type/:id/:name/:price/:description"
+        element={<EditDish />}
+      />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }
