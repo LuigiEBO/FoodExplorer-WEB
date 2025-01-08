@@ -25,6 +25,7 @@ export const Container = styled.div`
         margin-bottom: 1rem;
 
         div.ingredientes {
+          overflow-y: scroll;
           white-space: normal;
           display: flex;
           justify-content: space-around;
