@@ -7,12 +7,15 @@ import { Footer } from "../../Components/footer";
 import { FiArrowLeft, FiMinus, FiPlus} from "react-icons/fi";
 import { Button } from "../../Components/button";
 import { Link } from "react-router-dom";
+import { Tag } from "../../Components/tags";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 export function PratoCustomer() {
   const [amount, setAmount] = useState(1);
   const [dataFood, setDataFood] = useState(" ")
+  const [dataTags, setDataTags] = useState(null)
   const params = useParams()
+  const id = Number(params.id)
 
   useEffect(() => {
     async function fetchDish() {
@@ -20,7 +23,11 @@ export function PratoCustomer() {
 
       setDataFood(response.data[0])
     }
-
+    async function fetchTags() {
+      const response = await api.get(`/tags/foods?id=${id}`)
+      setDataTags(response.data)
+    }
+    fetchTags()
     fetchDish()
   }, [])
   const imgFood = params.img
@@ -37,14 +44,19 @@ export function PratoCustomer() {
           </Link>
         </div>
 
-        {dataFood && 
+        {dataFood && (
           <div className="info">
             <img className="pratoImg" src={imgFood} alt="Imagem do prato" />
             <div className="text">
               <h1>{dataFood.name}</h1>
-              <p>
-                {dataFood.description}
-              </p>
+              <p>{dataFood.description}</p>
+              {dataTags && (
+                <div className="tags">
+                  {dataTags.map((tag) => (
+                    <Tag key={String(tag.id)} title={tag.name} />
+                  ))}
+                </div>
+              )}
               <div className="ask-food">
                 <FiMinus onClick={() => setAmount(amount - 1)} />
                 <span>{amount}</span>
@@ -57,7 +69,7 @@ export function PratoCustomer() {
               </div>
             </div>
           </div>
-        }
+        )}
       </div>
       <Footer />
     </Container>

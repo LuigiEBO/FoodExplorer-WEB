@@ -20,9 +20,16 @@ export const Container = styled.div`
       gap: 3rem;
       > div.text {
         display: flex;
+        align-items:center ;
         flex-direction: column;
         gap: 3rem;
 
+        > div.tags {
+          display: flex;
+          gap: 1rem;
+          max-width: 15rem;
+          overflow-x: scroll;
+        }
         h1 {
           font-weight: 500;
         }
