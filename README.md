@@ -1,6 +1,6 @@
 ## Autor
 
-- Api criado por Luigi Oliveira para o desafio final do curso Explorer.
+- Front-end criado por Luigi Oliveira para o desafio final do curso Explorer.
 
 
 ## Referência
